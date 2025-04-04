@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/kafka-basiscs" />
+            <option value="$PROJECT_DIR$/kafka-producer-wikimedia" />
           </set>
         </option>
       </GradleProjectSettings>
