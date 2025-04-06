@@ -8,7 +8,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 
-import java.beans.EventHandler;
 import java.net.URI;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -26,6 +25,12 @@ public class WikimediaChangesProducer {
         props.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         //create the producer
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+
+        //set safe producer (<=2.8)
+        props.setProperty(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
+        props.setProperty(ProducerConfig.ACKS_CONFIG, "all"); //same as -1
+        props.setProperty(ProducerConfig.RETRIES_CONFIG, Integer.toString(Integer.MAX_VALUE)); //same as -1
+
 
         String topic = "wikimedia.recentchange";
 
