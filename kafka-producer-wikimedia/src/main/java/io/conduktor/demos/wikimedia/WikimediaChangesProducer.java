@@ -31,6 +31,11 @@ public class WikimediaChangesProducer {
         props.setProperty(ProducerConfig.ACKS_CONFIG, "all"); //same as -1
         props.setProperty(ProducerConfig.RETRIES_CONFIG, Integer.toString(Integer.MAX_VALUE)); //same as -1
 
+        // set high throughput producer config
+        props.setProperty(ProducerConfig.LINGER_MS_CONFIG, Integer.toString(20));
+        props.setProperty(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32*1024));
+        props.setProperty(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
+
 
         String topic = "wikimedia.recentchange";
 
