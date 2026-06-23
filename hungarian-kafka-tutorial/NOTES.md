@@ -1,5 +1,7 @@
 # Kafka Training Notes
- 
+
+![alt text](image.png) 
+
 `__consumer_offset` topic: melyik consumer melyik partíció melyik offsetjénél tart
  
 ## Topic Replication
