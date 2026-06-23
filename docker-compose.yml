@@ -22,6 +22,8 @@ services:
     volumes:
       - conduktor_data:/var/conduktor
     environment:
+      CDK_ADMIN_EMAIL: "admin@conduktor.io"
+      CDK_ADMIN_PASSWORD: "Almafa123!"
       CDK_DATABASE_URL: "postgresql://conduktor:change_me@postgresql:5432/conduktor-console"
       CDK_KAFKASQL_DATABASE_URL: "postgresql://conduktor:change_me@postgresql-sql:5432/conduktor-sql"
       CDK_ORGANIZATION_NAME: "getting-started"
