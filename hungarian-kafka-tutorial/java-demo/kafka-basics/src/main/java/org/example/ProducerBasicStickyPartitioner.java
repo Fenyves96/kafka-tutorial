@@ -27,7 +27,7 @@ public class ProducerBasicStickyPartitioner {
         // this is only for demo purposes to make the batch small enough that not every message would fit in it
         properties.setProperty("batch.size", "400");
 
-        //properties.setProperty("partitioner.class", RoundRobinPartitioner.class.getName());
+        properties.setProperty("partitioner.class", RoundRobinPartitioner.class.getName());
 
         // create the Producer
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);

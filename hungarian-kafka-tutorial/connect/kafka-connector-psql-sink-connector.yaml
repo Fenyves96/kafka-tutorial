@@ -1,0 +1,21 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: sink-postgres
+  labels:
+    strimzi.io/cluster: first-connect-cluster
+spec:
+  class: io.confluent.connect.jdbc.JdbcSinkConnector
+  tasksMax: 1
+  config:
+    topics: structured-topic
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter.schemas.enable: true
+    connection.url: jdbc:postgresql://postgresql.default.svc:5432/mydb
+    connection.user: postgresuser
+    connection.password: changeme123
+    insert.mode: insert
+    auto.create: true
+    table.name.format: structured_topic
+    pk.mode: record_value
+    pk.fields: id
